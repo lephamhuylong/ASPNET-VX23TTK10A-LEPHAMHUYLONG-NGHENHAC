@@ -1,0 +1,18 @@
+﻿@model MyMusicApp.Models.Playlist
+
+@{
+    ViewData["Title"] = "Xóa Playlist";
+}
+
+<h1>Xóa Playlist</h1>
+
+<h3>Bạn có chắc chắn muốn xóa playlist "@Model.Name"?</h3>
+<div>
+    <hr />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Quay lại danh sách</a>
+    </form>
+</div>
+

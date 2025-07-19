@@ -1,0 +1,23 @@
+﻿/* wwwroot/css/player.css */
+.song-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+    .song-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15) !important;
+    }
+
+#player-container {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%); /* Ẩn player ban đầu */
+}
+
+    #player-container.active {
+        transform: translateY(0); /* Hiện player khi có nhạc */
+    }
+
+#progress-bar {
+    height: 0.5rem;
+}

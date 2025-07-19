@@ -1,0 +1,135 @@
+﻿@model MyMusicApp.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<!-- Bootstrap Carousel (Slider) -->
+<div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner rounded shadow-sm">
+        <div class="carousel-item active">
+            <img src="~/images/slider/1.jpg" class="d-block w-100" alt="Slide 1" style="object-fit: cover; height: 400px;">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/slider/2.jpg" class="d-block w-100" alt="Slide 2" style="object-fit: cover; height: 400px;">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/slider/3.jpg" class="d-block w-100" alt="Slide 3" style="object-fit: cover; height: 400px;">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/slider/4.jpg" class="d-block w-100" alt="Slide 4" style="object-fit: cover; height: 400px;">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="row">
+    <!-- Cột bên trái: Vũ trụ nhạc Việt & Bài hát mới nhất -->
+    <div class="col-lg-8">
+        <!-- Vũ trụ nhạc Việt -->
+        <div class="mb-5">
+            <h2 class="section-title">Vũ Trụ Nhạc Việt</h2>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
+                @foreach (var item in Model.FeaturedPlaylists)
+                {
+                    <div class="col">
+                        <div class="card h-100 shadow-sm song-card"
+                             data-song-id="@item.Id"
+                             data-title="@item.Title"
+                             data-artist="@item.Artist"
+                             data-image-url="@item.ImageUrl"
+                             data-file-path="@item.FilePath">
+                            <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 150px; object-fit: cover;">
+                            <div class="card-body">
+                                <h6 class="card-title text-truncate" style="font-size: 0.9rem; font-weight: 500;">@item.Title</h6>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- 5 Bài hát mới nhất -->
+        <div>
+            <h2 class="section-title">Mới Phát Hành</h2>
+            <div class="list-group">
+                @foreach (var song in Model.LatestSongs)
+                {
+                    <div class="list-group-item list-group-item-action d-flex align-items-center p-2">
+                        <div class="d-flex align-items-center flex-grow-1 song-card" style="cursor: pointer;"
+                             data-song-id="@song.Id" data-title="@song.Title" data-artist="@song.Artist" data-image-url="@song.ImageUrl" data-file-path="@song.FilePath">
+                            <img src="@song.ImageUrl" alt="@song.Title" class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                            <div class="flex-grow-1">
+                                <div class="fw-bold">@song.Title</div>
+                                <small class="text-muted">@song.Artist</small>
+                            </div>
+                        </div>
+
+                        <!-- CỤM NÚT HÀNH ĐỘNG -->
+                        <div class="ms-3 d-flex gap-2">
+                            <button class="btn btn-outline-primary btn-sm btn-add-to-playlist" data-song-id="@song.Id" data-song-name="@song.Title" title="Thêm vào playlist">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <!-- NÚT TẢI VỀ -->
+                            <a asp-controller="Downloads" asp-action="Song" asp-route-id="@song.Id" class="btn btn-outline-success btn-sm" title="Tải về">
+                                <i class="fas fa-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Cột bên phải: Bảng xếp hạng -->
+    <div class="col-lg-4">
+        <div class="chart-container">
+            <h2 class="section-title">Bảng Xếp Hạng</h2>
+            <ul class="nav nav-tabs chart-tabs mb-3" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="vietnam-tab" data-bs-toggle="tab" data-bs-target="#vietnam" type="button" role="tab">Việt Nam</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="usuk-tab" data-bs-toggle="tab" data-bs-target="#usuk" type="button" role="tab">Âu Mỹ</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="korea-tab" data-bs-toggle="tab" data-bs-target="#korea" type="button" role="tab">Hàn Quốc</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="vietnam" role="tabpanel">
+                    <ol class="list-group list-group-flush chart-list">
+                        @for (int i = 0; i < Model.ChartSongs.Count; i++)
+                        {
+                            var song = Model.ChartSongs[i];
+                            <li class="list-group-item d-flex align-items-center song-card"
+                                data-song-id="@song.Id" data-title="@song.Title" data-artist="@song.Artist" data-image-url="@song.ImageUrl" data-file-path="@song.FilePath">
+                                <span class="chart-rank me-3">@(i + 1)</span>
+                                <img src="@song.ImageUrl" alt="@song.Title" class="rounded me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-truncate">@song.Title</div>
+                                    <small class="text-muted text-truncate">@song.Artist</small>
+                                </div>
+                            </li>
+                        }
+                    </ol>
+                </div>
+                <!-- Các tab khác có thể thêm nội dung sau -->
+                <div class="tab-pane fade" id="usuk" role="tabpanel">...</div>
+                <div class="tab-pane fade" id="korea" role="tabpanel">...</div>
+            </div>
+        </div>
+    </div>
+</div>

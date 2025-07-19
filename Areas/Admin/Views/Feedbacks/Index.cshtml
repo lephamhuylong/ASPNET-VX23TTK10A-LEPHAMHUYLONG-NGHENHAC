@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MyMusicApp.Models.Feedback>
+
+@{
+    ViewData["Title"] = "Quản lý Phản hồi";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        @foreach (var feedback in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between">
+                    <strong>Từ: @feedback.Email</strong>
+                    <span class="text-muted">@feedback.CreatedAt.ToString("g")</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@feedback.Message</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model MyMusicApp.Models.Feedback
+
+@{
+    ViewData["Title"] = "Liên hệ";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Nếu bạn có bất kỳ câu hỏi hoặc phản hồi nào, vui lòng điền vào form bên dưới và gửi cho chúng tôi.</p>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Contact" method="post">
+            @Html.AntiForgeryToken() <!-- THÊM DÒNG NÀY ĐỂ TẠO MÃ BẢO MẬT -->
+            <div asp-validation-summary="All" class="text-danger"></div> <!-- Thay đổi thành "All" để hiển thị mọi lỗi -->
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Message" class="control-label">Nội dung phản hồi</label>
+                <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Gửi đi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

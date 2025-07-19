@@ -1,0 +1,30 @@
+﻿# Dependencies
+**/[Bb]in/
+**/[Oo]bj/
+
+# Visual Studio files
+*.vs/
+.vs/
+*.user
+*.suo
+
+# Build results
+[Bb]uild/
+[Rr]elease/
+[Dd]ebug/
+
+# Rider files
+.idea/
+
+# User secrets
+secrets.json
+
+# Other
+*.dbmdl
+*.jfm
+*~
+*.lock.json
+*.pid
+*.pid.lock
+_ReSharper*/
+appsettings.Development.json

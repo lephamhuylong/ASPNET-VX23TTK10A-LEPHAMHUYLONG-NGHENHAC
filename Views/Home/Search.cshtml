@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MyMusicApp.Models.Song>
+
+@{
+    ViewData["Title"] = "Kết quả tìm kiếm";
+    var query = ViewData["CurrentQuery"] as string;
+}
+
+<h1 class="mb-4">Kết quả tìm kiếm cho: "@query"</h1>
+
+@if (Model.Any())
+{
+    <div class="list-group">
+        @foreach (var song in Model)
+        {
+            <div class="list-group-item list-group-item-action d-flex align-items-center song-card"
+                 data-song-id="@song.Id"
+                 data-title="@song.Title"
+                 data-artist="@song.Artist"
+                 data-image-url="@song.ImageUrl"
+                 data-file-path="@song.FilePath">
+
+                <img src="@song.ImageUrl" alt="@song.Title" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">@song.Title</h5>
+                    <p class="mb-1 text-muted">@song.Artist</p>
+                </div>
+
+                <button class="btn btn-primary btn-play ms-auto">
+                    <i class="fas fa-play"></i>
+                </button>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Không tìm thấy bài hát nào phù hợp với từ khóa "@query".
+    </div>
+}

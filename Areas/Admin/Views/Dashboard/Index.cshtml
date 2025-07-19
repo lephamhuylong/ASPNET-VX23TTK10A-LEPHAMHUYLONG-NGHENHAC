@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Trang Quản Trị";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-0 text-gray-800">@ViewData["Title"]</h1>
+        <p class="mb-0 text-muted">Chào mừng đến với khu vực quản trị. Chọn một chức năng bên dưới để bắt đầu.</p>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    <!-- Card: Quản lý Bài hát -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Chức năng chính
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Quản lý Bài hát</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-music fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+                <a asp-area="Admin" asp-controller="Songs" asp-action="Index" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card: Quản lý Thể loại -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Phân loại
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Quản lý Thể loại</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-tags fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+                <a asp-area="Admin" asp-controller="Genres" asp-action="Index" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card: Quản lý Người dùng -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Hệ thống
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Quản lý Người dùng</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Index" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card: Quản lý Phản hồi -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-secondary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                            Tương tác
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Quản lý Phản hồi</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-envelope fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+                <a asp-area="Admin" asp-controller="Feedbacks" asp-action="Index" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Thêm một chút CSS để các thẻ card có viền màu đẹp hơn -->
+@section Styles {
+    <style>
+        .card .card-body {
+            position: relative;
+        }
+
+        .card .stretched-link::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            content: "";
+        }
+
+        .border-left-primary {
+            border-left: 0.25rem solid #4e73df !important;
+        }
+
+        .border-left-success {
+            border-left: 0.25rem solid #1cc88a !important;
+        }
+
+        .border-left-warning {
+            border-left: 0.25rem solid #f6c23e !important;
+        }
+
+        .border-left-secondary {
+            border-left: 0.25rem solid #858796 !important;
+        }
+    </style>
+}

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MyMusicApp.Models.Playlist>
+
+@{
+    ViewData["Title"] = "Playlist của tôi";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo Playlist mới</a>
+</div>
+
+@if (Model.Any())
+{
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <a asp-action="Details" asp-route-id="@item.Id" class="text-decoration-none text-dark flex-grow-1">
+                    @item.Name
+                </a>
+                <!-- THÊM NÚT XÓA -->
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i> Xóa
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-info">Bạn chưa có playlist nào. Hãy tạo một playlist mới!</div>
+}
