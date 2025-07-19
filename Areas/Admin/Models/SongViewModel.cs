@@ -19,6 +19,5 @@ public class SongViewModel
 
     public IFormFile? ImageFile { get; set; }
 
-    // Dùng để hiển thị danh sách thể loại trong dropdown
     public IEnumerable<Genre>? Genres { get; set; }
 }
