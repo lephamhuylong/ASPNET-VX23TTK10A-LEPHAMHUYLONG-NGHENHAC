@@ -17,7 +17,7 @@ public class SongViewModel
     [Required(ErrorMessage = "Vui lòng chọn file nhạc")]
     public IFormFile MusicFile { get; set; }
 
-    public IFormFile? ImageFile { get; set; } // Ảnh bìa có thể không bắt buộc
+    public IFormFile? ImageFile { get; set; }
 
     // Dùng để hiển thị danh sách thể loại trong dropdown
     public IEnumerable<Genre>? Genres { get; set; }
