@@ -1,4 +1,4 @@
-﻿// File: Areas/Admin/Models/UserViewModel.cs
+
 namespace MyMusicApp.Areas.Admin.Models
 {
     public class UserViewModel
