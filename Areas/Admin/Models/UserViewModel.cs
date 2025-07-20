@@ -1,4 +1,3 @@
-
 namespace MyMusicApp.Areas.Admin.Models
 {
     public class UserViewModel

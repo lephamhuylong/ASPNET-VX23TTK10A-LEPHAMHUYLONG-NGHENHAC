@@ -21,19 +21,19 @@ public class HomeController : Controller
     {
         var viewModel = new HomeViewModel
         {
-            // Lấy 5 bài hát mới nhất (dựa theo Id giảm dần)
+            
             LatestSongs = await _context.Songs
                                 .OrderByDescending(s => s.Id)
                                 .Take(5)
                                 .ToListAsync(),
 
-            // Lấy 10 bài hát có lượt nghe cao nhất cho bảng xếp hạng
+           
             ChartSongs = await _context.Songs
                                 .OrderByDescending(s => s.ListenCount)
                                 .Take(10)
                                 .ToListAsync(),
 
-            // Tạm thời lấy 5 bài hát đầu tiên để làm placeholder cho "Vũ trụ nhạc Việt"
+           
             FeaturedPlaylists = await _context.Songs
                                         .Take(5)
                                         .ToListAsync()
@@ -42,7 +42,7 @@ public class HomeController : Controller
         return View(viewModel);
     }
 
-    // --- ACTION TÌM KIẾM ĐÃ ĐƯỢC CẬP NHẬT ĐỂ HIỆU QUẢ HƠN ---
+  
     public async Task<IActionResult> Search(string query)
     {
         ViewData["CurrentQuery"] = query;
@@ -52,9 +52,7 @@ public class HomeController : Controller
             return View(new List<Song>());
         }
 
-        // Sử dụng EF.Functions.Like để tạo câu lệnh SQL LIKE,
-        // hiệu quả hơn so với việc dùng ToLower().
-        // Tùy thuộc vào Collation của database, tìm kiếm này thường không phân biệt chữ hoa-thường.
+    
         var searchResults = await _context.Songs
             .Where(s => EF.Functions.Like(s.Title, $"%{query}%") || EF.Functions.Like(s.Artist, $"%{query}%"))
             .ToListAsync();
@@ -80,7 +78,7 @@ public class HomeController : Controller
             return RedirectToAction("Index");
         }
 
-        // --- GHI LẠI LỖI CHI TIẾT ---
+   
         var errors = ModelState.Values.SelectMany(v => v.Errors);
         foreach (var error in errors)
         {
@@ -90,7 +88,7 @@ public class HomeController : Controller
                 _logger.LogError("Exception (if any): {Exception}", error.Exception.Message);
             }
         }
-        // --- KẾT THÚC GHI LỖI ---
+  
 
         return View(model);
     }

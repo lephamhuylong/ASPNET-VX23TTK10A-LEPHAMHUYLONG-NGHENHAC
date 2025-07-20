@@ -30,11 +30,11 @@
                 </button>
                 <div class="navbar-collapse collapse">
 
-                    <!-- MENU ĐỘNG: HIỂN THỊ TÙY THEO QUYỀN -->
+                    
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
-                            <!-- Menu cho Admin -->
+                           
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="Admin" asp-controller="Songs" asp-action="Index">Quản lý Bài hát</a>
                             </li>
@@ -50,7 +50,7 @@
                         }
                         else
                         {
-                            <!-- Menu cho Người dùng thường và Khách -->
+                           
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Trang Chủ</a>
                             </li>
@@ -117,7 +117,7 @@
                 <div class="modal-body">
                     <p>Chọn một playlist để thêm bài hát <strong id="song-name-modal"></strong>:</p>
                     <div id="playlist-selection" class="list-group">
-                        <!-- Danh sách playlist sẽ được tải vào đây bằng JavaScript -->
+                        
                     </div>
                 </div>
                 <div class="modal-footer">

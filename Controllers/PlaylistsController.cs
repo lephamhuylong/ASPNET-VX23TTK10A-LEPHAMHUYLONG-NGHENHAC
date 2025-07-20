@@ -67,7 +67,7 @@ public class PlaylistsController : Controller
         return View(viewModel);
     }
 
-    // --- THÊM CÁC ACTION MỚI ĐỂ XÓA PLAYLIST ---
+   
     // GET: Playlists/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
@@ -94,7 +94,7 @@ public class PlaylistsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // --- THÊM API MỚI ĐỂ XÓA BÀI HÁT KHỎI PLAYLIST ---
+   
     [HttpPost]
     public async Task<IActionResult> RemoveSongFromPlaylist(int songId, int playlistId)
     {
@@ -118,7 +118,7 @@ public class PlaylistsController : Controller
         return Json(new { success = false, message = "Bài hát không có trong playlist." });
     }
 
-    // GET API: Lấy danh sách playlist của người dùng
+    
     [HttpGet]
     public async Task<IActionResult> GetUserPlaylists()
     {
@@ -130,7 +130,7 @@ public class PlaylistsController : Controller
         return Json(playlists);
     }
 
-    // POST API: Thêm một bài hát vào playlist
+ 
     [HttpPost]
     public async Task<IActionResult> AddSongToPlaylist(int songId, int playlistId)
     {

@@ -4,7 +4,7 @@ using MyMusicApp.Models;
 
 namespace MyMusicApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser> // Thay IdentityUser bằng ApplicationUser
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser> 
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -22,7 +22,7 @@ namespace MyMusicApp.Data
         {
             base.OnModelCreating(builder);
 
-            // Cấu hình khóa chính phức hợp cho bảng PlaylistSong
+           
             builder.Entity<PlaylistSong>()
                 .HasKey(ps => new { ps.PlaylistId, ps.SongId });
         }

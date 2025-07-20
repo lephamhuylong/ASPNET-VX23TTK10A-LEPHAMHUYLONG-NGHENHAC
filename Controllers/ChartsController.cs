@@ -13,10 +13,10 @@ namespace MyMusicApp.Controllers
             _context = context;
         }
 
-        // GET: /Charts
+     
         public async Task<IActionResult> Index()
         {
-            // Lấy 100 bài hát có lượt nghe cao nhất, sắp xếp giảm dần
+        
             var top100Songs = await _context.Songs
                 .OrderByDescending(s => s.ListenCount)
                 .Take(100)

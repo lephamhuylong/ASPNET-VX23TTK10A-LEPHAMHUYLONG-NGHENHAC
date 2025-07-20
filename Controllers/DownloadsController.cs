@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace MyMusicApp.Controllers
 {
-    [Authorize] // Yêu cầu người dùng phải đăng nhập để tải nhạc
+    [Authorize] 
     public class DownloadsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,7 +18,7 @@ namespace MyMusicApp.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        // GET: /Downloads/Song/5
+       
         public async Task<IActionResult> Song(int? id)
         {
             if (id == null)
@@ -32,10 +32,10 @@ namespace MyMusicApp.Controllers
                 return NotFound();
             }
 
-            // Tăng biến đếm lượt tải
+         
             song.DownloadCount++;
 
-            // Ghi lại nhật ký tải
+          
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var downloadLog = new DownloadLog
             {
@@ -47,7 +47,7 @@ namespace MyMusicApp.Controllers
 
             await _context.SaveChangesAsync();
 
-            // Lấy đường dẫn vật lý của file
+        
             var filePath = Path.Combine(_webHostEnvironment.WebRootPath, song.FilePath.TrimStart('/'));
 
             if (!System.IO.File.Exists(filePath))
@@ -55,7 +55,7 @@ namespace MyMusicApp.Controllers
                 return NotFound();
             }
 
-            // Đọc file và trả về cho người dùng
+           
             var memory = new MemoryStream();
             using (var stream = new FileStream(filePath, FileMode.Open))
             {
@@ -63,7 +63,7 @@ namespace MyMusicApp.Controllers
             }
             memory.Position = 0;
 
-            // Trả về file với tên gốc để trình duyệt hiển thị đúng
+          
             return File(memory, "application/octet-stream", Path.GetFileName(filePath));
         }
     }

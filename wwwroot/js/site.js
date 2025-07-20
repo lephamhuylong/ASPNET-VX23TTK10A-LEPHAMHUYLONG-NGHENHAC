@@ -1,6 +1,6 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
 
-    // Hàm khởi tạo trình phát nhạc
+  
     function initializePlayer() {
         const audioPlayer = document.getElementById('audio-player');
         const playerContainer = document.getElementById('player-container');
@@ -37,7 +37,7 @@
             playerContainer.classList.add('active');
             updatePlayPauseIcon(true);
 
-            // --- GỌI API ĐỂ TĂNG LƯỢT NGHE ---
+           
             try {
                 await fetch(`/api/SongsApi/IncrementListenCount/${songData.id}`, {
                     method: 'POST'
@@ -77,7 +77,7 @@
         });
     }
 
-    // Hàm khởi tạo các chức năng liên quan đến playlist
+ 
     function initializePlaylist() {
         const addToPlaylistModalElement = document.getElementById('addToPlaylistModal');
         if (!addToPlaylistModalElement) return;
@@ -87,7 +87,7 @@
         const songNameModalSpan = document.getElementById('song-name-modal');
         let currentSongIdToAdd = null;
 
-        // Logic cho nút "Thêm vào playlist"
+     
         document.querySelectorAll('.btn-add-to-playlist').forEach(button => {
             button.addEventListener('click', async function (event) {
                 event.stopPropagation();
@@ -125,7 +125,7 @@
             });
         });
 
-        // Logic khi chọn một playlist trong modal để thêm bài hát vào
+
         playlistSelectionDiv.addEventListener('click', async function (event) {
             event.preventDefault();
             if (event.target.matches('.list-group-item-action')) {
@@ -147,7 +147,7 @@
             }
         });
 
-        // Logic cho nút "Xóa khỏi playlist"
+    
         document.querySelectorAll('.btn-remove-from-playlist').forEach(button => {
             button.addEventListener('click', async function (event) {
                 event.stopPropagation();
@@ -167,7 +167,7 @@
                         alert(result.message);
 
                         if (result.success) {
-                            // Xóa bài hát khỏi giao diện mà không cần tải lại trang
+                        
                             document.getElementById(`song-${songId}`).remove();
                         }
                     } catch (error) {
@@ -179,7 +179,7 @@
         });
     }
 
-    // Khởi chạy các chức năng
+ 
     initializePlayer();
     initializePlaylist();
 });

@@ -3,7 +3,7 @@
     ViewData["Title"] = "Trang chủ";
 }
 
-<!-- Bootstrap Carousel (Slider) -->
+
 <div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="3000">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -36,9 +36,9 @@
 </div>
 
 <div class="row">
-    <!-- Cột bên trái: Vũ trụ nhạc Việt & Bài hát mới nhất -->
+    
     <div class="col-lg-8">
-        <!-- Vũ trụ nhạc Việt -->
+       
         <div class="mb-5">
             <h2 class="section-title">Vũ Trụ Nhạc Việt</h2>
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <!-- 5 Bài hát mới nhất -->
+      
         <div>
             <h2 class="section-title">Mới Phát Hành</h2>
             <div class="list-group">
@@ -77,12 +77,12 @@
                             </div>
                         </div>
 
-                        <!-- CỤM NÚT HÀNH ĐỘNG -->
+                      
                         <div class="ms-3 d-flex gap-2">
                             <button class="btn btn-outline-primary btn-sm btn-add-to-playlist" data-song-id="@song.Id" data-song-name="@song.Title" title="Thêm vào playlist">
                                 <i class="fas fa-plus"></i>
                             </button>
-                            <!-- NÚT TẢI VỀ -->
+                           
                             <a asp-controller="Downloads" asp-action="Song" asp-route-id="@song.Id" class="btn btn-outline-success btn-sm" title="Tải về">
                                 <i class="fas fa-download"></i>
                             </a>
@@ -93,7 +93,7 @@
         </div>
     </div>
 
-    <!-- Cột bên phải: Bảng xếp hạng -->
+ 
     <div class="col-lg-4">
         <div class="chart-container">
             <h2 class="section-title">Bảng Xếp Hạng</h2>
@@ -126,7 +126,7 @@
                         }
                     </ol>
                 </div>
-                <!-- Các tab khác có thể thêm nội dung sau -->
+               
                 <div class="tab-pane fade" id="usuk" role="tabpanel">...</div>
                 <div class="tab-pane fade" id="korea" role="tabpanel">...</div>
             </div>

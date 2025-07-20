@@ -58,7 +58,7 @@ body {
         opacity: 0.9;
     }
 
-    /* THÊM ĐOẠN NÀY ĐỂ BỎ VIỀN XANH KHI CLICK */
+ 
     .navbar .btn-register:focus {
         box-shadow: none;
         outline: 0;

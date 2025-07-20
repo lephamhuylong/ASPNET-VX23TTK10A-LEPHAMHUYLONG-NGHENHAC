@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyMusicApp.Models; // Giữ cùng namespace cho đơn giản
+namespace MyMusicApp.Models; 
 
 public class PlaylistCreateViewModel
 {
